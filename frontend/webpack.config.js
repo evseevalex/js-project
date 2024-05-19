@@ -33,6 +33,10 @@ module.exports = {
 			template: 'index.html',
 		}),
 		new HtmlWebpackPlugin({
+			filename: 'login.html',
+			template: 'src/templates/login.html',
+		}),
+		new HtmlWebpackPlugin({
 			filename: 'income.html',
 			template: 'src/templates/income.html',
 		}),

@@ -1,0 +1,94 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+@import 'variables';
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 14px;
+	color: #052c65;
+}
+
+.page {
+	min-height: 100vh;
+}
+
+.logo {
+	padding: 40px 0 20px 50px;
+}
+
+.nav {
+	// --bs-nav-link-padding-x: 11px;
+	// --bs-nav-link-padding-y: 12px;
+	margin: 60px 20px 0;
+}
+
+.sidebar {
+	width: 219px !important;
+}
+
+.nav-item,
+.accordion-button {
+	line-height: 16px;
+}
+
+.accordion-item {
+	transition: all 0.15s ease-in-out;
+	&:has(.accordion-collapse.show),
+	&:has(.accordion-collapse.collapsing) {
+		--bs-accordion-border-color: var(--bs-primary);
+	}
+}
+
+.accordion-body {
+	padding: 0;
+
+	& .nav-link {
+		border-radius: 0;
+	}
+}
+
+.nav-link {
+	line-height: 24px;
+}
+
+.accordion-button {
+	font-size: 14px;
+
+	&::after {
+		transform: rotate(-90deg);
+	}
+}
+
+.menu-bottom {
+	padding: 20px 20px 40px 20px;
+}
+
+.balance {
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+
+.content {
+	padding: 100px 60px 0 60px;
+}
+
+.card-title {
+	margin-bottom: 10px;
+}
+
+.card-body {
+	font-size: 0;
+}
+.card-body a:last-child:is(.btn) {
+	margin-left: 10px;
+}
+
+.modal-text {
+	font-weight: 500;
+}
+
+.filter-item label {
+	width: 100px;
+}

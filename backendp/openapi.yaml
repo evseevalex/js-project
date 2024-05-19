@@ -1,0 +1,448 @@
+openapi: 3.0.0
+info:
+  title: Backend for JS project
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+  - url: localhost://
+tags:
+  - name: Auth
+  - name: Category-expense
+  - name: Operations
+  - name: Category-income
+  - name: Balance
+paths:
+  /api/refresh:
+    post:
+      tags:
+        - Auth
+      summary: Refresh
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                refreshToken: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJyb21hbkBpdGxvZ2lhLnJ1IiwiaWF0IjoxNjYzMDk3Mjk2LCJleHAiOjE2NjMxODM2OTZ9.ro2aR21hVaB4hKxKxEoj_X87dbB5bzCqVPG1SpTmi2g
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login:
+    post:
+      tags:
+        - Auth
+      summary: Log In
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: test@itlogia.ru
+                password: 12345678Qq
+                rememberMe: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/signup:
+    post:
+      tags:
+        - Auth
+      summary: Sign Up
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Роман
+                lastName: Чернов
+                email: roman@itlogia.ru
+                password: 12345678Qq
+                passwordRepeat: 12345678Qq
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/logout:
+    post:
+      tags:
+        - Auth
+      summary: Log Out
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                refreshToken: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjI5OTczNDIsImV4cCI6MTY2NTU4OTM0Mn0.suPnUi_M_2wpWRtJ9GfVgR0hQ5jYqIi3ShGK_iyPqD4
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/categories/expense:
+    get:
+      tags:
+        - Category-expense
+      summary: Get categories
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTczMjYsImV4cCI6MTY2MzA5ODIyNn0.iKu1srt3uoLIZsdcVyGc20D6qlPKLfLmYxRu-KLL0xQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Category-expense
+      summary: Create category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Новая категория моя
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJyb21hbkBpdGxvZ2lhLnJ1IiwiaWF0IjoxNjYzMDE4NjA0LCJleHAiOjE2NjMwMTk1MDR9.vzEXz7z4ybMmL3WOTUqY-U7Sb65_qR3bbPXrJFixIeo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/categories/expense/1:
+    get:
+      tags:
+        - Category-expense
+      summary: Get category
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTczMjYsImV4cCI6MTY2MzA5ODIyNn0.iKu1srt3uoLIZsdcVyGc20D6qlPKLfLmYxRu-KLL0xQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Category-expense
+      summary: Update category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Измененная
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJyb21hbkBpdGxvZ2lhLnJ1IiwiaWF0IjoxNjYzMDE4NjA0LCJleHAiOjE2NjMwMTk1MDR9.vzEXz7z4ybMmL3WOTUqY-U7Sb65_qR3bbPXrJFixIeo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/categories/expense/3:
+    delete:
+      tags:
+        - Category-expense
+      summary: Delete category
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJyb21hbkBpdGxvZ2lhLnJ1IiwiaWF0IjoxNjYzMDE4NjA0LCJleHAiOjE2NjMwMTk1MDR9.vzEXz7z4ybMmL3WOTUqY-U7Sb65_qR3bbPXrJFixIeo
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/operations:
+    get:
+      tags:
+        - Operations
+      summary: Get operations with filter
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTc2MjIsImV4cCI6MTY2MzA5ODUyMn0.YHLAiEh_u-dH9qKxTq0Mw_Vfzdp4zweM5H5bqKrcc08
+        - name: period
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: ["week", "month", "year", "all", "interval"]
+          example: interval
+          description: >
+            if you're using value `interval` you should pass dateFrom and dateTo
+        - name: dateFrom
+          in: query
+          schema:
+            type: string
+          example: '2022-09-12'
+        - name: dateTo
+          in: query
+          schema:
+            type: string
+          example: '2022-09-13'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Operations
+      summary: Create operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                type: income
+                amount: 250
+                date: '2022-01-01'
+                comment: new comment
+                category_id: 2
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTg2MzUsImV4cCI6MTY2MzA5OTUzNX0.94YDRhYXPMy8nCdFaRouRY2fzDeY2hJJdPsSCb5j4JA
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/operations/2:
+    get:
+      tags:
+        - Operations
+      summary: Get operation
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwMTk3ODYsImV4cCI6MTY2MzAyMDY4Nn0.fqfnXG42iIT5YBb-hihozpLJ2Cg2mTD1PHXBvjt3lVw
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Operations
+      summary: Update operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                type: expense
+                amount: 150
+                date: '2022-02-02'
+                comment: wtf
+                category_id: 3
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTc2MjIsImV4cCI6MTY2MzA5ODUyMn0.YHLAiEh_u-dH9qKxTq0Mw_Vfzdp4zweM5H5bqKrcc08
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/operations/1:
+    delete:
+      tags:
+        - Operations
+      summary: Delete operation
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwMjA3MTcsImV4cCI6MTY2MzAyMTYxN30.CeqNhbJ0ZcQ9imcLQ7-F9q705BSLZlUbMeeOZwtJUh8
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/categories/income:
+    get:
+      tags:
+        - Category-income
+      summary: Get categories
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwMTc5NDgsImV4cCI6MTY2MzAxODg0OH0.-jKCuStW7w9y6ZPRQZ35jeBYEIBi3izJhuHAqZXAR7k
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Category-income
+      summary: Create category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Новая категория
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTczMjYsImV4cCI6MTY2MzA5ODIyNn0.iKu1srt3uoLIZsdcVyGc20D6qlPKLfLmYxRu-KLL0xQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/categories/income/1:
+    get:
+      tags:
+        - Category-income
+      summary: Get category
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwMTc5NDgsImV4cCI6MTY2MzAxODg0OH0.-jKCuStW7w9y6ZPRQZ35jeBYEIBi3izJhuHAqZXAR7k
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Category-income
+      summary: Update category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Измененная
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTczMjYsImV4cCI6MTY2MzA5ODIyNn0.iKu1srt3uoLIZsdcVyGc20D6qlPKLfLmYxRu-KLL0xQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/categories/income/2:
+    delete:
+      tags:
+        - Category-income
+      summary: Delete category
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwMTc5NDgsImV4cCI6MTY2MzAxODg0OH0.-jKCuStW7w9y6ZPRQZ35jeBYEIBi3izJhuHAqZXAR7k
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/balance:
+    get:
+      tags:
+        - Balance
+      summary: Get Balance
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTczMjYsImV4cCI6MTY2MzA5ODIyNn0.iKu1srt3uoLIZsdcVyGc20D6qlPKLfLmYxRu-KLL0xQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Balance
+      summary: Update Balance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                newBalance: 1000
+      parameters:
+        - name: x-auth-token
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QGl0bG9naWEucnUiLCJpYXQiOjE2NjMwOTczMjYsImV4cCI6MTY2MzA5ODIyNn0.iKu1srt3uoLIZsdcVyGc20D6qlPKLfLmYxRu-KLL0xQ
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

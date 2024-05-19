@@ -1,0 +1,18 @@
+.accordion {
+	--bs-accordion-bg: transparent;
+	--bs-accordion-border-color: transparent;
+	--bs-accordion-active-bg: var(--bs-primary);
+	--bs-accordion-active-color: var(--bs-white);
+	--bs-accordion-btn-padding-y: 12px;
+	--bs-accordion-btn-padding-x: 16px;
+	--bs-accordion-btn-focus-box-shadow: none;
+	--bs-accordion-btn-active-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5L8 11L14 5"/></svg>');
+	--bs-accordion-btn-icon-width: 1rem;
+}
+
+.modal {
+	--bs-modal-width: 530px;
+}
+
+$bs-nav-link-padding-x: 11px;
+$bs-nav-link-padding-y: 12px;

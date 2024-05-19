@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Вход</title>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+		<style>
+			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				background-color: #f8f9fa;
+			}
+			.login-container {
+				max-width: 400px;
+				width: 100%;
+				padding: 20px;
+				border-radius: 10px;
+				background: #fff;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+			.login-logo {
+				display: block;
+				margin: 0 auto 20px;
+			}
+			.login-title {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="login-container">
+			<img src="path/to/logo.png" alt="Logo" class="login-logo" />
+			<h2 class="login-title">Вход</h2>
+			<form>
+				<div class="mb-3">
+					<label for="email" class="form-label">Электронная почта</label>
+					<div class="input-group">
+						<span class="input-group-text"><i class="bi bi-envelope"></i></span>
+						<input type="email" class="form-control" id="email" placeholder="Введите вашу почту" />
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label">Пароль</label>
+					<div class="input-group">
+						<span class="input-group-text"><i class="bi bi-lock"></i></span>
+						<input type="password" class="form-control" id="password" placeholder="Введите ваш пароль" />
+					</div>
+				</div>
+				<div class="form-check mb-3">
+					<input type="checkbox" class="form-check-input" id="rememberMe" />
+					<label class="form-check-label" for="rememberMe">Запомнить меня</label>
+				</div>
+				<button type="submit" class="btn btn-primary w-100">Войти</button>
+				<div class="text-center mt-3">
+					<small>Ещё нет аккаунта? <a href="#">Пройдите регистрацию</a></small>
+				</div>
+			</form>
+		</div>
+
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

@@ -11859,6 +11859,10 @@ textarea.form-control-lg {
   --bs-accordion-btn-icon-width: 1rem;
 }
 
+.modal {
+  --bs-modal-width: 530px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -11924,4 +11928,45 @@ body {
 
 .content {
   padding: 100px 60px 0 60px;
+}
+
+.card-title {
+  margin-bottom: 10px;
+}
+
+.card-body {
+  font-size: 0;
+}
+
+.card-body a:last-child:is(.btn) {
+  margin-left: 10px;
+}
+
+.modal-text {
+  font-weight: 500;
+}
+
+.filter-item label {
+  width: 100px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type=email] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type=password] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

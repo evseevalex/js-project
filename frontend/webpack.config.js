@@ -37,6 +37,14 @@ module.exports = {
 			template: 'src/templates/income.html',
 		}),
 		new HtmlWebpackPlugin({
+			filename: 'login.html',
+			template: 'src/templates/login.html',
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'signin.html',
+			template: 'src/templates/signin.html',
+		}),
+		new HtmlWebpackPlugin({
 			filename: 'expenses.html',
 			template: 'src/templates/expenses.html',
 		}),

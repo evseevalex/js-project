@@ -2,6 +2,11 @@
 
 @import 'variables';
 
+html,
+body {
+	height: 100%;
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
@@ -15,7 +20,7 @@ body {
 }
 
 .logo {
-	padding: 40px 0 20px 50px;
+	padding: 40px 70px 20px 50px;
 }
 
 .nav {
@@ -91,4 +96,14 @@ body {
 
 .filter-item label {
 	width: 100px;
+}
+
+.signin {
+	max-width: 397px;
+	padding: 1rem;
+}
+
+.login-logo {
+	width: 171px;
+	height: 70px;
 }

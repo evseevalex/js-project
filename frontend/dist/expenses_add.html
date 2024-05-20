@@ -7,13 +7,13 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-	</head>
+	<script defer src="app.js"></script><link href="styles/main.css" rel="stylesheet"></head>
 	<body>
 		<main class="page d-flex flex-nowrap">
 			<div class="sidebar d-flex flex-column flex-shrink-0 bg-light border-end" style="width: 280px">
 				<div class="logo border-bottom">
 					<a href="/" class="d-flex align-items-center mb-3 mb-md-0 link-dark text-decoration-none">
-						<img class="img-fluid" src="/images/logo.png" alt="" />
+						<img src="/images/logo.png" alt="" />
 					</a>
 				</div>
 				<ul class="nav nav-pills flex-column mb-auto">
@@ -63,125 +63,22 @@
 				</div>
 			</div>
 			<div class="content d-flex flex-column w-100">
-				<h1 class="fw-medium fs-1">Расходы</h1>
-				<div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Еда</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+				<h1 class="fw-medium fs-1">Создание категории расходов</h1>
+				<form>
+					<div class="row">
+						<div class="col-3">
+							<div class="mt-3">
+								<input type="text" class="form-control" id="name" placeholder="Название..." />
+							</div>
+							<div class="mt-3">
+								<a href="/expenses.html" class="btn btn-success">Создать</a>
+								<a href="/expenses.html" class="btn btn-danger">Отмена</a>
 							</div>
 						</div>
 					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Жильё</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Здоровье</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Кафе</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Авто</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Одежда</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Развлечения</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Счета</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<h2 class="card-title h3">Спорт</h2>
-								<a href="/expenses_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<div class="card-body">
-								<a class="h-100 d-flex justify-content-center align-items-center p-4" href="/expenses_add.html">
-									<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M14.5469 6.08984V9.05664H0.902344V6.08984H14.5469ZM9.32422 0.511719V15.0039H6.13867V0.511719H9.32422Z"
-											fill="#CED4DA"
-										/>
-									</svg>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				</form>
 			</div>
 		</main>
-
-		<div
-			class="modal fade"
-			id="exampleModalToggle"
-			aria-hidden="true"
-			aria-labelledby="exampleModalToggleLabel"
-			tabindex="-1"
-		>
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content p-4">
-					<div class="modal-body text-center">
-						<div class="modal-text fs-5 mb-3">Вы действительно хотите удалить категорию?</div>
-
-						<a href="#" class="btn btn-success"> Да, удалить </a>
-						<a href="#" class="btn btn-danger ms-2"> Не удалять </a>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
 			<symbol id="money" viewBox="0 0 16 16">

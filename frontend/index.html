@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<main class="page d-flex flex-nowrap">
-			<div class="sidebar d-flex flex-column flex-shrink-0 bg-light border-end" style="width: 280px">
+			<div class="sidebar d-flex flex-column flex-shrink-0 bg-light border-end position-fixed h-100">
 				<div class="logo border-bottom">
 					<a href="/" class="d-flex align-items-center mb-3 mb-md-0 link-dark text-decoration-none">
 						<img class="img-fluid" src="/images/logo.png" alt="" />
@@ -63,8 +63,26 @@
 				</div>
 			</div>
 			<div class="content d-flex flex-column w-100">
+				<header class="content-header d-flex d-xl-none justify-content-between">
+					<div class="menu-button">
+						<input type="checkbox" id="menuBtn" />
+						<label class="menu__button" for="menuBtn">
+							<img src="/images/menu.png" alt="menu icon" />
+						</label>
+						<label class="menu__close" for="menuBtn"></label>
+					</div>
+					<div class="filter-button d-block d-lg-none">
+						<input type="checkbox" id="filterBtn" />
+						<label class="menu__button" for="filterBtn">
+							<img src="/images/filter.png" alt="filter icon" />
+						</label>
+						<label class="filter__close" for="filterBtn"></label>
+					</div>
+				</header>
 				<h1 class="fw-medium fs-1">Главная</h1>
-				<div class="filter my-4 d-flex gap-4 align-items-center">
+				<div
+					class="filter my-lg-4 d-flex flex-column flex-lg-row gap-2 gap-lg-3 align-items-center justify-content-center justify-content-lg-start"
+				>
 					<div class="filter-item">
 						<input type="radio" class="btn-check" name="filter" id="filter1" autocomplete="off" checked />
 						<label class="btn btn-secondary btn-outline-secondary" for="btnradio1">Сегодня</label>
@@ -99,17 +117,15 @@
 					</div>
 				</div>
 				<div class="charts row">
-					<div class="col-6 text-center">
+					<div id="chart-one" class="col-12 col-lg-6 text-center d-flex flex-column align-items-center border-end">
 						<h2>Доходы</h2>
-						<canvas class="border-end mt-3" id="left-chart"></canvas>
-
+						<canvas class="mt-3" id="left-chart"></canvas>
 					</div>
-					<div class="col-6 text-center">
+					<div class="col-12 col-lg-6 text-center d-flex flex-column align-items-center">
 						<h2>Расходы</h2>
 						<canvas class="mt-3" id="right-chart"></canvas>
-
 					</div>
-				  </div>
+				</div>
 			</div>
 		</main>
 
@@ -158,60 +174,52 @@
 
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script>
-			const ctx1 = document.getElementById('left-chart');
-			const ctx2 = document.getElementById('right-chart');
-		  
+			const ctx1 = document.getElementById('left-chart')
+			const ctx2 = document.getElementById('right-chart')
+
 			new Chart(ctx1, {
 				type: 'pie',
 				data: {
-				labels: [
-					'Red',
-					'Orange',
-					'Yellow',
-					'Green',
-					'Blue',
-				],
-				datasets: [{
-					label: 'Доходы',
-					data: [300, 50, 100, 500, 150],
-					backgroundColor: [
-					'rgba(220, 53, 69)',
-					'rgba(253, 126, 20)',
-					'rgba(255, 193, 7)',
-					'rgba(32, 201, 151)',
-					'rgba(13, 110, 253)'
+					labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+					datasets: [
+						{
+							label: 'Доходы',
+							data: [300, 50, 100, 500, 150],
+							backgroundColor: [
+								'rgba(220, 53, 69)',
+								'rgba(253, 126, 20)',
+								'rgba(255, 193, 7)',
+								'rgba(32, 201, 151)',
+								'rgba(13, 110, 253)',
+							],
+							hoverOffset: 4,
+							// radius: 180,
+						},
 					],
-					hoverOffset: 4,
-					radius: 180,
-				}]
 				},
-			});
+			})
 
 			new Chart(ctx2, {
 				type: 'pie',
 				data: {
-				labels: [
-					'Red',
-					'Orange',
-					'Yellow',
-					'Green',
-					'Blue',
-				],
-				datasets: [{
-					label: 'Доходы',
-					data: [300, 50, 100, 500, 150],
-					backgroundColor: [
-					'rgba(220, 53, 69)',
-					'rgba(253, 126, 20)',
-					'rgba(255, 193, 7)',
-					'rgba(32, 201, 151)',
-					'rgba(13, 110, 253)'
+					labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+					datasets: [
+						{
+							label: 'Доходы',
+							data: [300, 50, 100, 500, 150],
+							backgroundColor: [
+								'rgba(220, 53, 69)',
+								'rgba(253, 126, 20)',
+								'rgba(255, 193, 7)',
+								'rgba(32, 201, 151)',
+								'rgba(13, 110, 253)',
+							],
+							hoverOffset: 4,
+							// radius: 180,
+						},
 					],
-					hoverOffset: 4,
-					radius: 180,
-				}]
 				},
-			});
-		  </script>
+			})
+		</script>
 	</body>
 </html>

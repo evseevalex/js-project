@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<main class="page d-flex flex-nowrap">
-			<div class="sidebar d-flex flex-column flex-shrink-0 bg-light border-end" style="width: 280px">
+			<div class="sidebar d-flex flex-column flex-shrink-0 bg-light border-end position-fixed h-100">
 				<div class="logo border-bottom">
 					<a href="/" class="d-flex align-items-center mb-3 mb-md-0 link-dark text-decoration-none">
 						<img class="img-fluid" src="/images/logo.png" alt="" />
@@ -63,14 +63,25 @@
 				</div>
 			</div>
 			<div class="content d-flex flex-column w-100">
+				<header class="content-header d-flex d-xl-none justify-content-between">
+					<div class="menu-button">
+						<input type="checkbox" id="menuBtn" />
+						<label class="menu__button" for="menuBtn">
+							<img src="/images/menu.png" alt="menu icon" />
+						</label>
+						<label class="menu__close" for="menuBtn"></label>
+					</div>
+				</header>
 				<h1 class="fw-medium fs-1">Доходы</h1>
 				<div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
 					<div class="col">
 						<div class="card h-100">
 							<div class="card-body">
 								<h2 class="card-title h3">Депозиты</h2>
-								<a href="/income_edit.html" class="btn btn-primary">Редактировать</a>
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+								<div class="d-flex gap-1 flex-column flex-lg-row card-control">
+									<a href="/income_edit.html" class="btn btn-primary">Редактировать</a>
+									<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -78,9 +89,10 @@
 						<div class="card h-100">
 							<div class="card-body">
 								<h2 class="card-title h3">Зарплата</h2>
-								<a href="/income_edit.html" class="btn btn-primary">Редактировать</a>
-
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+								<div class="d-flex gap-1 flex-column flex-lg-row card-control">
+									<a href="/income_edit.html" class="btn btn-primary">Редактировать</a>
+									<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -88,9 +100,10 @@
 						<div class="card h-100">
 							<div class="card-body">
 								<h2 class="card-title h3">Сбережения</h2>
-								<a href="/income_edit.html" class="btn btn-primary">Редактировать</a>
-
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+								<div class="d-flex gap-1 flex-column flex-lg-row card-control">
+									<a href="/income_edit.html" class="btn btn-primary">Редактировать</a>
+									<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -98,9 +111,10 @@
 						<div class="card h-100">
 							<div class="card-body">
 								<h2 class="card-title h3">Инвестиции</h2>
-								<a href="/income_edit.html" class="btn btn-primary">Редактировать</a>
-
-								<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+								<div class="d-flex gap-1 flex-column flex-lg-row card-control">
+									<a href="/income_edit.html" class="btn btn-primary">Редактировать</a>
+									<a href="#exampleModalToggle" class="btn btn-danger" data-bs-toggle="modal" role="button">Удалить</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -136,8 +150,10 @@
 							Вы действительно хотите удалить категорию? Связанные доходы будут удалены навсегда.
 						</div>
 
-						<a href="#" class="btn btn-success"> Да, удалить </a>
-						<a href="#" class="btn btn-danger ms-2"> Не удалять </a>
+						<div class="d-flex flex-column flex-sm-row gap-1 modal-control">
+							<a href="#" class="btn btn-success"> Да, удалить </a>
+							<a href="#" class="btn btn-danger"> Не удалять </a>
+						</div>
 					</div>
 				</div>
 			</div>

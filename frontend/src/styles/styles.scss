@@ -15,6 +15,10 @@ body {
 	color: #052c65;
 }
 
+h1 {
+	margin-top: 100px;
+}
+
 .page {
 	min-height: 100vh;
 }
@@ -40,6 +44,7 @@ body {
 
 .sidebar {
 	width: 219px !important;
+	z-index: 2;
 }
 
 .nav-item,
@@ -85,7 +90,7 @@ body {
 }
 
 .content {
-	padding: 100px 60px 0 60px;
+	padding: 0 60px 0 279px;
 }
 
 .card-title {
@@ -94,9 +99,6 @@ body {
 
 .card-body {
 	font-size: 0;
-}
-.card-body a:last-child:is(.btn) {
-	margin-left: 10px;
 }
 
 .modal-text {
@@ -115,4 +117,99 @@ body {
 .login-logo {
 	width: 171px;
 	height: 70px;
+}
+
+.menu-button input,
+.filter-button input {
+	display: none;
+}
+
+.menu__close,
+.filter__close {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.4);
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.3s ease;
+	z-index: 1;
+}
+
+.menu__button img,
+.filter__button img {
+	width: 30px;
+	height: 30px;
+}
+
+.content-header {
+	margin-top: 20px;
+}
+
+.charts > * > canvas {
+	max-width: 450px;
+	max-height: 467px;
+}
+
+@media screen and (max-width: 1199px) {
+	.page {
+		&:has(.menu-button > input:checked) {
+			.sidebar {
+				left: 0px;
+			}
+
+			label.menu__close {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		&:has(.filter-button > input:checked) {
+			.filter {
+				right: 0px;
+			}
+
+			label.filter__close {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	h1 {
+		margin-top: 50px;
+	}
+
+	.content {
+		padding: 0 60px 0 79px;
+	}
+
+	.sidebar {
+		transition: 0.2s ease-out;
+		left: -219px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.filter {
+		position: fixed;
+		right: -200px;
+		width: 200px;
+		height: 100%;
+		background-color: white;
+		z-index: 2;
+		transition: 0.2s ease-out;
+	}
+
+	#chart-one {
+		border-right: none !important;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.charts {
+		margin-top: 70px;
+	}
 }

@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<main class="page d-flex flex-nowrap">
-			<div class="sidebar d-flex flex-column flex-shrink-0 bg-light border-end" style="width: 280px">
+			<div class="sidebar d-flex flex-column flex-shrink-0 bg-light border-end position-fixed h-100">
 				<div class="logo border-bottom">
 					<a href="/" class="d-flex align-items-center mb-3 mb-md-0 link-dark text-decoration-none">
 						<img class="img-fluid" src="/images/logo.png" alt="" />
@@ -63,8 +63,17 @@
 				</div>
 			</div>
 			<div class="content d-flex flex-column w-100">
+				<header class="content-header d-flex d-xl-none justify-content-between">
+					<div class="menu-button">
+						<input type="checkbox" id="menuBtn" />
+						<label class="menu__button" for="menuBtn">
+							<img src="/images/menu.png" alt="menu icon" />
+						</label>
+						<label class="menu__close" for="menuBtn"></label>
+					</div>
+				</header>
 				<h1 class="fw-medium fs-1 mb-4">Доходы и расходы</h1>
-				<div class="control-button my-3">
+				<div class="control-button d-flex flex-column flex-sm-row gap-1 my-3">
 					<a href="/income_and_expenses_add.html" class="btn btn-success">Создать доход</a>
 					<a href="/income_and_expenses_add.html" class="btn btn-danger">Создать расход</a>
 				</div>
@@ -102,7 +111,7 @@
 						<a href="#" class="text-secondary ms-3">Дата</a>
 					</div>
 				</div>
-				<div class="table-container mt-3">
+				<div class="table-responsive mt-3">
 					<table class="table text-center">
 						<thead>
 							<tr>
@@ -123,8 +132,8 @@
 								<td>500$</td>
 								<td>11.09.2022</td>
 								<td></td>
-								<td align="right">
-									<a class="me-2" href="#exampleModalToggle" data-bs-toggle="modal" role="button"
+								<td class="d-flex gap-1" align="right">
+									<a href="#exampleModalToggle" data-bs-toggle="modal" role="button"
 										><img src="/images/trash.svg" alt="Trash" /></a
 									><a href="/income_and_expenses_edit.html"><img src="/images/pen.svg" alt="Pen" /></a>
 								</td>
@@ -136,8 +145,8 @@
 								<td>2500$</td>
 								<td>12.09.2022</td>
 								<td></td>
-								<td align="right">
-									<a class="me-2" href="#exampleModalToggle" data-bs-toggle="modal" role="button"
+								<td class="d-flex gap-1" align="right">
+									<a href="#exampleModalToggle" data-bs-toggle="modal" role="button"
 										><img src="/images/trash.svg" alt="Trash" /></a
 									><a href="/income_and_expenses_edit.html"><img src="/images/pen.svg" alt="Pen" /></a>
 								</td>
@@ -160,8 +169,10 @@
 					<div class="modal-body text-center">
 						<div class="modal-text fs-5 mb-3">Вы действительно хотите удалить операцию?</div>
 
-						<a href="#" class="btn btn-success"> Да, удалить </a>
-						<a href="#" class="btn btn-danger ms-2"> Не удалять </a>
+						<div class="d-flex flex-column flex-sm-row gap-1 modal-control">
+							<a href="#" class="btn btn-success"> Да, удалить </a>
+							<a href="#" class="btn btn-danger"> Не удалять </a>
+						</div>
 					</div>
 				</div>
 			</div>

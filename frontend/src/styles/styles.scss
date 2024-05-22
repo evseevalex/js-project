@@ -209,6 +209,9 @@ h1 {
 }
 
 @media screen and (max-width: 767px) {
+	.content {
+		padding: 0 15px 0 34px;
+	}
 	.charts {
 		margin-top: 70px;
 	}

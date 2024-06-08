@@ -7,12 +7,12 @@ export class Auth {
 
   static setAuthInfo(tokens = null, userInfo = null) {
     if (tokens) {
-      localStorage.setItem(this.accessTokenKey, tokens.accessToken);
-      localStorage.setItem(this.refreshTokenKey, tokens.refreshToken);
+      localStorage.setItem(Auth.accessTokenKey, tokens.accessToken);
+      localStorage.setItem(Auth.refreshTokenKey, tokens.refreshToken);
     }
 
     if (userInfo) {
-      localStorage.setItem(this.userInfoKey, JSON.stringify(userInfo));
+      localStorage.setItem(Auth.userInfoKey, JSON.stringify(userInfo));
     }
   }
 
@@ -42,7 +42,6 @@ export class Auth {
   static async updateRefreshToken() {
     let result = false;
     const refreshToken = Auth.getAuthInfo(Auth.refreshTokenKey);
-    console.log(refreshToken);
     if (refreshToken) {
       const response = await fetch(config.api + "/refresh", {
         method: "POST",
@@ -55,8 +54,11 @@ export class Auth {
 
       if (response && response.status === 200) {
         const tokens = await response.json();
-        if (tokens && !tokens.error) {
-          this.setAuthInfo(tokens.accessToken, tokens.refreshToken);
+        if (tokens.tokens && !tokens.error) {
+          this.setAuthInfo({
+            accessToken: tokens.tokens.accessToken,
+            refreshToken: tokens.tokens.refreshToken,
+          });
           result = true;
         }
       }

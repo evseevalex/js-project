@@ -1,20 +1,52 @@
 <section>
-	<h1 class="fw-medium fs-1 mb-4">Создание дохода/расхода</h1>
-	<form>
-		<div class="row">
-			<div class="col-12 col-sm-6 col-md-3">
-				<div class="mt-3">
-					<input type="text" class="form-control mb-2" id="type" placeholder="Тип..." />
-					<input type="text" class="form-control mb-2" id="category" placeholder="Категория..." />
-					<input type="text" class="form-control mb-2" id="sum" placeholder="Сумма в $..." />
-					<input type="date" class="form-control mb-2" id="date" placeholder="Дата..." />
-					<input type="text" class="form-control" id="comment" placeholder="Комментарий..." />
-				</div>
-				<div class="d-flex gap-1 flex-column flex-sm-row mt-3">
-					<a href="/income-and-expenses" class="btn btn-success">Создать</a>
-					<a href="/income-and-expenses" class="btn btn-danger">Отмена</a>
-				</div>
-			</div>
-		</div>
-	</form>
+  <h1 class="fw-medium fs-1 mb-4">Создание дохода/расхода</h1>
+  <form>
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="mt-3">
+          <select
+            id="type"
+            class="form-select mb-2"
+            aria-label="Выбор категории"
+            required
+          >
+            <option value="income">Доход</option>
+            <option value="expense">Расход</option>
+          </select>
+          <select
+            id="category"
+            class="form-select mb-2"
+            aria-label="Выбор категории"
+            required
+          ></select>
+          <input
+            type="text"
+            class="form-control mb-2"
+            id="amount"
+            placeholder="Сумма в $..."
+            required
+          />
+          <input
+            type="date"
+            class="form-control mb-2"
+            id="date"
+            placeholder="Дата..."
+            required
+          />
+          <input
+            type="text"
+            class="form-control"
+            id="comment"
+            placeholder="Комментарий..."
+          />
+        </div>
+        <div class="d-flex gap-1 flex-column flex-sm-row mt-3">
+          <a id="create-btn" href="javascript:void(0)" class="btn btn-success"
+            >Создать</a
+          >
+          <a href="/income-and-expenses" class="btn btn-danger">Отмена</a>
+        </div>
+      </div>
+    </div>
+  </form>
 </section>

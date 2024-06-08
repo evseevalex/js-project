@@ -1,5 +1,5 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
-
+@import "../../node_modules/flatpickr/dist/flatpickr.min.css";
 @import "variables";
 
 html,
@@ -50,6 +50,14 @@ h1 {
 .nav-item,
 .accordion-button {
   line-height: 16px;
+}
+
+.dropup .dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-toggle {
+  border: 0;
 }
 
 .accordion-item {
@@ -200,6 +208,10 @@ h1 {
 @media screen and (max-width: 991px) {
   .filter {
     position: fixed;
+    top: 0;
+    flex-direction: column;
+    margin-top: 0 !important;
+    padding-top: 20px;
     right: -200px;
     width: 200px;
     height: 100%;

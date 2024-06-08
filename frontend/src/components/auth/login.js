@@ -1,5 +1,6 @@
 import { Auth } from "../../services/auth";
 import { Http } from "../../services/http";
+import { User } from "../../services/user";
 
 export class Login {
   constructor(redirect) {
@@ -71,6 +72,7 @@ export class Login {
       }
 
       Auth.setAuthInfo(result.response.tokens, result.response.user);
+      await User.getUser();
 
       this.redirect("/");
     }

@@ -15,7 +15,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.scss$/i,
-				use: [MiniCssExtractPlugin.loader, , 'css-loader', 'sass-loader'],
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 		],
 	},
@@ -32,64 +32,17 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: 'index.html',
 		}),
-		new HtmlWebpackPlugin({
-			filename: 'login.html',
-			template: 'src/templates/login.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'income.html',
-			template: 'src/templates/income.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'login.html',
-			template: 'src/templates/login.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'signin.html',
-			template: 'src/templates/signin.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'expenses.html',
-			template: 'src/templates/expenses.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'expenses_add.html',
-			template: 'src/templates/expenses_add.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'expenses_edit.html',
-			template: 'src/templates/expenses_edit.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'income_add.html',
-			template: 'src/templates/income_add.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'income_edit.html',
-			template: 'src/templates/income_edit.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'income_and_expenses.html',
-			template: 'src/templates/income_and_expenses.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'income_and_expenses_add.html',
-			template: 'src/templates/income_and_expenses_add.html',
-		}),
-		new HtmlWebpackPlugin({
-			filename: 'income_and_expenses_edit.html',
-			template: 'src/templates/income_and_expenses_edit.html',
-		}),
 		new CopyPlugin({
 			patterns: [
+				{
+					from: './src/templates',
+					to: 'templates',
+				},
 				{
 					from: './src/assets/images',
 					to: 'images',
 				},
 			],
-		}),
-		new MiniCssExtractPlugin({
-			filename: 'styles/[name].css',
 		}),
 	],
 }

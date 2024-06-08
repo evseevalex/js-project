@@ -1,0 +1,84 @@
+<section>
+	<h1 class="fw-medium fs-1 mb-4">Доходы и расходы</h1>
+	<div class="control-button d-flex flex-column flex-sm-row gap-1 my-3">
+		<a href="/income-and-expenses/add" class="btn btn-success">Создать доход</a>
+		<a href="/income-and-expenses/add" class="btn btn-danger">Создать расход</a>
+	</div>
+	<div class="filter my-4 d-flex gap-4 align-items-center">
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter1" autocomplete="off" checked />
+			<label class="btn btn-secondary btn-outline-secondary" for="btnradio1">Сегодня</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter2" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio2">Неделя</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter3" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio3">Месяц</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter4" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio3">Год</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter5" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio3">Все</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter6" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio3">Интервал</label>
+		</div>
+		<div class="filter-item">
+			<strong>c</strong>
+			<a href="#" class="text-secondary ms-3">Дата</a>
+		</div>
+		<div class="filter-item">
+			<strong>по</strong>
+			<a href="#" class="text-secondary ms-3">Дата</a>
+		</div>
+	</div>
+	<div class="table-responsive mt-3">
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th scope="col" width="120">№ операции</th>
+					<th scope="col">Тип</th>
+					<th scope="col">Категория</th>
+					<th scope="col">Сумма</th>
+					<th scope="col">Дата</th>
+					<th scope="col">Комментарий</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td class="text-success">доход</td>
+					<td>зарплата</td>
+					<td>500$</td>
+					<td>11.09.2022</td>
+					<td></td>
+					<td class="d-flex gap-1" align="right">
+						<a href="#exampleModalToggle" data-bs-toggle="modal" role="button"
+							><img src="/images/trash.svg" alt="Trash" /></a
+						><a href="/income_and_expenses/edit"><img src="/images/pen.svg" alt="Pen" /></a>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td class="text-danger">расход</td>
+					<td>жильё</td>
+					<td>2500$</td>
+					<td>12.09.2022</td>
+					<td></td>
+					<td class="d-flex gap-1" align="right">
+						<a href="#exampleModalToggle" data-bs-toggle="modal" role="button"
+							><img src="/images/trash.svg" alt="Trash" /></a
+						><a href="/income_and_expenses/edit"><img src="/images/pen.svg" alt="Pen" /></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

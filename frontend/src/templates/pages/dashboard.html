@@ -1,0 +1,49 @@
+<section>
+	<h1 class="fw-medium fs-1">Главная</h1>
+	<div
+		class="filter my-lg-4 d-flex flex-column flex-lg-row gap-2 gap-lg-3 align-items-center justify-content-center justify-content-lg-start"
+	>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter1" autocomplete="off" checked />
+			<label class="btn btn-secondary btn-outline-secondary" for="btnradio1">Сегодня</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter2" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio2">Неделя</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter3" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio3">Месяц</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter4" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio3">Год</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter5" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio3">Все</label>
+		</div>
+		<div class="filter-item">
+			<input type="radio" class="btn-check" name="filter" id="filter6" autocomplete="off" />
+			<label class="btn btn-outline-secondary" for="btnradio3">Интервал</label>
+		</div>
+		<div class="filter-item">
+			<strong>c</strong>
+			<a href="#" class="text-secondary ms-3">Дата</a>
+		</div>
+		<div class="filter-item">
+			<strong>по</strong>
+			<a href="#" class="text-secondary ms-3">Дата</a>
+		</div>
+	</div>
+	<div class="charts row">
+		<div id="chart-one" class="col-12 col-lg-6 text-center d-flex flex-column align-items-center border-end">
+			<h2>Доходы</h2>
+			<canvas class="mt-3" id="left-chart"></canvas>
+		</div>
+		<div class="col-12 col-lg-6 text-center d-flex flex-column align-items-center">
+			<h2>Расходы</h2>
+			<canvas class="mt-3" id="right-chart"></canvas>
+		</div>
+	</div>
+</section>

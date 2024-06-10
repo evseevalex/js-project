@@ -25,22 +25,26 @@ export class User {
     if (User.#instance) {
       return User.#instance;
     }
-    return new User().init();
+    return new User().update();
   }
 
-  static getBalance() {
-    return User.getUser().balance;
+  static async getBalance() {
+    const user = User.#instance;
+    if (user) {
+      await user.update();
+      return user.balance;
+    }
   }
 
   static deleteUser() {
     User.#instance = null;
   }
 
-  async init() {
-    this.balance = await this.initBalance();
+  async update() {
+    this.balance = await this.updateBalance();
   }
 
-  async initBalance() {
+  async updateBalance() {
     const result = await Http.request("/balance", "GET", true);
 
     if (!result.error || result.response.balance) {

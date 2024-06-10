@@ -2,6 +2,7 @@ import flatpickr from "flatpickr";
 import { Income } from "./income";
 import { Expenses } from "./expenses";
 import { Report } from "./report";
+import { log10 } from "chart.js/helpers";
 
 export class Dashboard {
   constructor() {
@@ -61,16 +62,15 @@ export class Dashboard {
     let data = await Report.get().then((pr) => pr.reports);
     let incomeData = incomeLabels.map((itemL) => {
       return data.reduce((acc, item) => {
-        if (itemL.title === item.category) {
+        if (itemL.title === item.category && item.type === "income") {
           return acc + item.amount;
         }
         return acc;
       }, 0);
     });
-
     let expenseData = expenseLabels.map((itemL) => {
       return data.reduce((acc, item) => {
-        if (itemL.title === item.category) {
+        if (itemL.title === item.category && item.type === "expense") {
           return acc + item.amount;
         }
         return acc;
@@ -86,12 +86,11 @@ export class Dashboard {
         },
       ],
     };
-
     this.expenseChart.data = {
       labels: expenseLabels.map((item) => item.title),
       datasets: [
         {
-          label: "Доходы",
+          label: "Расходы",
           data: expenseData,
           hoverOffset: 4,
         },

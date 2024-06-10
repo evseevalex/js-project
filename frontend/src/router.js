@@ -313,7 +313,8 @@ export class Router {
             'input[name="filter"]',
           )) {
             if (
-              radio.value === (await Report.getInstance().getFilter().period)
+              radio.value ===
+              (await Report.get().then((rp) => rp.getFilter().period))
             ) {
               radio.checked = true;
             }
@@ -671,9 +672,9 @@ export class Router {
               newRoute.useLayout,
             ).then((result) => result.text());
             this.drawMenu();
-            document.getElementById("balance").innerText =
-              User.getBalance() + "$";
           }
+          document.getElementById("balance").innerText =
+            (await User.getBalance()) + "$";
           contentBlock = document.getElementById("content-layout");
         }
         document.body.classList.remove();
@@ -755,6 +756,10 @@ export class Router {
 
   drawMenu() {
     const dropdownElement = document.getElementById("dropdown-menu");
+    const user = User.getUser();
+    if (user) {
+      dropdownElement.innerText = user.name + " " + user.lastName;
+    }
     const dropdown = new Dropdown(dropdownElement);
     dropdownElement.addEventListener("click", (e) => {
       dropdown.toggle();

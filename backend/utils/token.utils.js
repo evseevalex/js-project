@@ -7,7 +7,9 @@ class TokenUtils {
     try {
       const payload = { id: user.id, email: user.email };
 
-      const accessToken = jwt.sign(payload, config.secret, { expiresIn: "1m" });
+      const accessToken = jwt.sign(payload, config.secret, {
+        expiresIn: "15m",
+      });
       const refreshToken = jwt.sign(payload, config.secret, {
         expiresIn: rememberMe ? "30d" : "1d",
       });

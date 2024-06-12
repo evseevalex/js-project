@@ -18,7 +18,7 @@ export class Http {
     let token = null;
     if (useAuth) {
       token = Auth.getAuthInfo(Auth.accessTokenKey);
-      if (token) params.headers["authorization"] = token;
+      if (token) params.headers["x-auth-token"] = token;
     }
 
     if (body) {

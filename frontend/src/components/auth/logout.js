@@ -1,5 +1,6 @@
 import { Auth } from "../../services/auth";
 import { Http } from "../../services/http";
+import { User } from "../../services/user";
 
 export class Logout {
   constructor(redirect) {
@@ -20,6 +21,7 @@ export class Logout {
       refreshToken: Auth.getAuthInfo(Auth.refreshTokenKey),
     });
 
+    User.deleteUser();
     Auth.removeAuthInfo();
 
     this.redirect("/login");

@@ -5,7 +5,7 @@ const path = require("path");
 const devMode = true;
 
 module.exports = {
-  entry: ["./src/app.js", "./src/styles/styles.scss"],
+  entry: ["./src/app.ts", "./src/styles/styles.scss"],
   mode: "development",
   output: {
     filename: "app.js",
@@ -14,10 +14,18 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
         test: /\.scss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
   devServer: {
     watchFiles: ["src/**/*.scss"],

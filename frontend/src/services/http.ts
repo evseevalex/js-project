@@ -1,13 +1,20 @@
 import { Auth } from "./auth";
 import config from "../config/config";
+import { AuthInfoType } from "../types/auth-info.type";
+import { CustomResponseType } from "../types/response.type";
 
 export class Http {
-  static async request(url, method = "GET", useAuth = true, body = null) {
-    const result = {
+  static async request(
+    url: string,
+    method: string = "GET",
+    useAuth: boolean = true,
+    body: any = null,
+  ): Promise<any> {
+    const result: CustomResponseType = {
       error: false,
       response: null,
     };
-    const params = {
+    const params: any = {
       method: method,
       headers: {
         "Content-Type": "application/json",
@@ -15,7 +22,7 @@ export class Http {
       },
     };
 
-    let token = null;
+    let token: AuthInfoType = null;
     if (useAuth) {
       token = Auth.getAuthInfo(Auth.accessTokenKey);
       if (token) params.headers["x-auth-token"] = token;
@@ -25,10 +32,10 @@ export class Http {
       params.body = JSON.stringify(body);
     }
 
-    let response = null;
+    let response: Response | null = null;
     try {
       response = await fetch(config.api + url, params);
-      result.response = await response.json();
+      result.response = response;
     } catch (error) {
       result.error = true;
       return result;
@@ -40,7 +47,7 @@ export class Http {
         if (!token) {
           result.redirect = "/login";
         } else {
-          const updateTokenResult = await Auth.updateRefreshToken();
+          const updateTokenResult: boolean = await Auth.updateRefreshToken();
           if (updateTokenResult) {
             return this.request(url, method, useAuth, body);
           } else {

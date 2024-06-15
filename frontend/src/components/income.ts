@@ -1,7 +1,14 @@
 import { Http } from "../services/http";
+import {
+  CustomResponseType,
+  DefaultResponseType,
+  OperationsResponseType,
+} from "../types/response.type";
+import { IncomeResponseType, IncomesType } from "../types/income.type";
 
 export class Income {
-  static #instance = null;
+  static #instance: Income | null = null;
+  incomes: IncomesType = [];
   constructor() {
     if (Income.#instance) {
       return Income.#instance;
@@ -11,58 +18,63 @@ export class Income {
     return this;
   }
 
-  static async get() {
+  static async get(): Promise<Income> {
     if (Income.#instance) {
       await Income.#instance.init();
       return Income.#instance;
     }
-    const income = new Income();
+    const income: Income = new Income();
     await income.init();
     return income;
   }
 
-  static getInstance() {
+  static getInstance(): Income | null {
     return Income.#instance;
   }
 
-  async init() {
-    const result = await Http.request("/categories/income", "GET", true);
+  async init(): Promise<Income | null> {
+    const response: CustomResponseType = await Http.request(
+      "/categories/income",
+      "GET",
+      true,
+    );
+    const result: DefaultResponseType | IncomesType =
+      await response.response?.json();
 
-    if (!result.error && result.response) {
-      this.incomes = result.response;
+    if (!(result as DefaultResponseType).error && result) {
+      this.incomes = result as IncomesType;
     }
 
     return Income.#instance;
   }
 
-  async view() {
-    const list = document.getElementById("income-list");
+  async view(): Promise<void> {
+    const list: HTMLElement | null = document.getElementById("income-list");
+    if (!list) return;
     list.innerHTML = "";
-    this.incomes.forEach((item) => {
-      const colElement = document.createElement("div");
+    this.incomes.forEach((item: IncomeResponseType): void => {
+      const colElement: HTMLElement = document.createElement("div");
       colElement.className = "col";
-      const cardElement = document.createElement("div");
+      const cardElement: HTMLElement = document.createElement("div");
       cardElement.className = "card h-100";
-      const cardBodyElement = document.createElement("div");
+      const cardBodyElement: HTMLElement = document.createElement("div");
       cardBodyElement.className = "card-body";
-      const titleElement = document.createElement("h2");
+      const titleElement: HTMLElement = document.createElement("h2");
       titleElement.className = "card-title h3";
       titleElement.innerText = item.title;
-      const cardControlElement = document.createElement("div");
+      const cardControlElement: HTMLElement = document.createElement("div");
       cardControlElement.className =
         "d-flex gap-1 flex-column flex-lg-row card-control";
-      const editLinkElement = document.createElement("a");
+      const editLinkElement: HTMLElement = document.createElement("a");
       editLinkElement.className = "btn btn-primary";
       editLinkElement.innerText = "Редактировать";
       editLinkElement.setAttribute("href", "/income/edit");
-      editLinkElement.setAttribute("data-id", item.id);
+      editLinkElement.setAttribute("data-id", item.id.toString());
       const deleteLinkElement = document.createElement("a");
       deleteLinkElement.className = "modal-delete btn btn-danger";
       deleteLinkElement.innerText = "Удалить";
-      // deleteLinkElement.setAttribute("href", "#exampleModalToggle");
-      // deleteLinkElement.setAttribute("data-bs-toggle", "modal");
       deleteLinkElement.setAttribute("role", "button");
-      deleteLinkElement.setAttribute("data-id", item.id);
+      deleteLinkElement.setAttribute("data-id", item.id.toString());
 
       cardControlElement.appendChild(editLinkElement);
       cardControlElement.appendChild(deleteLinkElement);
@@ -73,7 +85,7 @@ export class Income {
       list.appendChild(colElement);
     });
 
-    const html =
+    const html: string =
       '      <div class="card h-100">\n' +
       '        <div class="card-body">\n' +
       "          <a\n" +
@@ -96,36 +108,52 @@ export class Income {
       "        </div>\n" +
       "      </div>\n";
 
-    const colElement = document.createElement("div");
+    const colElement: HTMLElement = document.createElement("div");
     colElement.className = "col";
     colElement.innerHTML = html;
     list.appendChild(colElement);
   }
 
-  async delete(id) {
-    const result = await Http.request(
+  async delete(id: number): Promise<boolean> {
+    const response: CustomResponseType = await Http.request(
       `/categories/income/${id}`,
       "DELETE",
       true,
     );
-    return !!(!result.error && result.response);
+    const result: DefaultResponseType = await response.response?.json();
+    return !result.error;
   }
 
-  async edit(id, title) {
-    const result = await Http.request(`/categories/income/${id}`, "PUT", true, {
-      title: title,
-    });
-    return !!(!result.error && result.response);
+  async edit(id: number, title: string): Promise<boolean> {
+    const response: CustomResponseType = await Http.request(
+      `/categories/income/${id}`,
+      "PUT",
+      true,
+      {
+        title: title,
+      },
+    );
+
+    const result: DefaultResponseType = await response.response?.json();
+    return !result.error;
   }
 
-  async add(title) {
-    const result = await Http.request("/categories/income", "POST", true, {
-      title: title,
-    });
-    return !!(!result.error && result.response);
+  async add(title: string): Promise<boolean> {
+    const response: CustomResponseType = await Http.request(
+      "/categories/income",
+      "POST",
+      true,
+      {
+        title: title,
+      },
+    );
+    const result: DefaultResponseType = await response.response?.json();
+    return !result.error;
   }
 
-  getItem(id) {
-    return this.incomes.find((item) => item.id === id);
+  getItem(id: number): IncomeResponseType | undefined {
+    return this.incomes.find(
+      (item: IncomeResponseType): boolean => item.id === id,
+    );
   }
 }

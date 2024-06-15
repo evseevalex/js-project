@@ -3,7 +3,8 @@ import { Http } from "../../services/http";
 import { User } from "../../services/user";
 
 export class Logout {
-  constructor(redirect) {
+  readonly redirect: Function;
+  constructor(redirect: Function) {
     this.redirect = redirect;
 
     if (
@@ -16,12 +17,11 @@ export class Logout {
     this.logout().then();
   }
 
-  async logout() {
+  async logout(): Promise<void> {
     await Http.request("/logout", "POST", false, {
       refreshToken: Auth.getAuthInfo(Auth.refreshTokenKey),
     });
 
-    User.deleteUser();
     Auth.removeAuthInfo();
 
     this.redirect("/login");

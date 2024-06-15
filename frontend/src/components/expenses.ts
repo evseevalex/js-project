@@ -1,7 +1,14 @@
 import { Http } from "../services/http";
+import {
+  CustomResponseType,
+  DefaultResponseType,
+} from "../types/response.type";
+import { ExpenseResponseType, ExpensesType } from "../types/expense.type";
+import { IncomeResponseType } from "../types/income.type";
 
 export class Expenses {
-  static #instance = null;
+  static #instance: Expenses | null = null;
+  expenses: ExpensesType = [];
   constructor() {
     if (Expenses.#instance) {
       return Expenses.#instance;
@@ -11,56 +18,63 @@ export class Expenses {
     return this;
   }
 
-  static async get() {
+  static async get(): Promise<Expenses> {
     if (Expenses.#instance) {
       await Expenses.#instance.init();
       return Expenses.#instance;
     }
-    const expense = new Expenses();
+    const expense: Expenses = new Expenses();
     await expense.init();
     return expense;
   }
 
-  static getInstance() {
+  static getInstance(): Expenses | null {
     return Expenses.#instance;
   }
 
-  async init() {
-    const result = await Http.request("/categories/expense", "GET", true);
+  async init(): Promise<Expenses | null> {
+    const response: CustomResponseType = await Http.request(
+      "/categories/expense",
+      "GET",
+      true,
+    );
 
-    if (!result.error && result.response) {
-      this.expenses = result.response;
+    const result: DefaultResponseType | ExpensesType =
+      await response.response?.json();
+    if (!(result as DefaultResponseType).error && (result as ExpensesType)) {
+      this.expenses = result as ExpensesType;
     }
 
     return Expenses.#instance;
   }
 
-  async view() {
-    const list = document.getElementById("expense-list");
+  async view(): Promise<void> {
+    const list: HTMLElement | null = document.getElementById("expense-list");
+    if (!list) return;
     list.innerHTML = "";
-    this.expenses.forEach((item) => {
-      const colElement = document.createElement("div");
+    this.expenses.forEach((item: ExpenseResponseType): void => {
+      const colElement: HTMLElement = document.createElement("div");
       colElement.className = "col";
-      const cardElement = document.createElement("div");
+      const cardElement: HTMLElement = document.createElement("div");
       cardElement.className = "card h-100";
-      const cardBodyElement = document.createElement("div");
+      const cardBodyElement: HTMLElement = document.createElement("div");
       cardBodyElement.className = "card-body";
-      const titleElement = document.createElement("h2");
+      const titleElement: HTMLElement = document.createElement("h2");
       titleElement.className = "card-title h3";
       titleElement.innerText = item.title;
-      const cardControlElement = document.createElement("div");
+      const cardControlElement: HTMLElement = document.createElement("div");
       cardControlElement.className =
         "d-flex gap-1 flex-column flex-lg-row card-control";
-      const editLinkElement = document.createElement("a");
+      const editLinkElement: HTMLElement = document.createElement("a");
       editLinkElement.className = "btn btn-primary";
       editLinkElement.innerText = "Редактировать";
       editLinkElement.setAttribute("href", "/expenses/edit");
-      editLinkElement.setAttribute("data-id", item.id);
-      const deleteLinkElement = document.createElement("a");
+      editLinkElement.setAttribute("data-id", item.id.toString());
+      const deleteLinkElement: HTMLElement = document.createElement("a");
       deleteLinkElement.className = "modal-delete btn btn-danger";
       deleteLinkElement.innerText = "Удалить";
       deleteLinkElement.setAttribute("role", "button");
-      deleteLinkElement.setAttribute("data-id", item.id);
+      deleteLinkElement.setAttribute("data-id", item.id.toString());
 
       cardControlElement.appendChild(editLinkElement);
       cardControlElement.appendChild(deleteLinkElement);
@@ -71,7 +85,7 @@ export class Expenses {
       list.appendChild(colElement);
     });
 
-    const html =
+    const html: string =
       '      <div class="card h-100">\n' +
       '        <div class="card-body">\n' +
       "          <a\n" +
@@ -94,23 +108,24 @@ export class Expenses {
       "        </div>\n" +
       "      </div>\n";
 
-    const colElement = document.createElement("div");
+    const colElement: HTMLElement = document.createElement("div");
     colElement.className = "col";
     colElement.innerHTML = html;
     list.appendChild(colElement);
   }
 
-  async delete(id) {
-    const result = await Http.request(
+  async delete(id: number): Promise<boolean> {
+    const response: CustomResponseType = await Http.request(
       `/categories/expense/${id}`,
       "DELETE",
       true,
     );
-    return !!(!result.error && result.response);
+    const result: DefaultResponseType = await response.response?.json();
+    return !result.error;
   }
 
-  async edit(id, title) {
-    const result = await Http.request(
+  async edit(id: number, title: string): Promise<boolean> {
+    const response: CustomResponseType = await Http.request(
       `/categories/expense/${id}`,
       "PUT",
       true,
@@ -118,17 +133,26 @@ export class Expenses {
         title: title,
       },
     );
-    return !!(!result.error && result.response);
+    const result: DefaultResponseType = await response.response?.json();
+    return !result.error;
   }
 
-  async add(title) {
-    const result = await Http.request("/categories/expense", "POST", true, {
-      title: title,
-    });
-    return !!(!result.error && result.response);
+  async add(title: string): Promise<boolean> {
+    const response: CustomResponseType = await Http.request(
+      "/categories/expense",
+      "POST",
+      true,
+      {
+        title: title,
+      },
+    );
+    const result: DefaultResponseType = await response.response?.json();
+    return !result.error;
   }
 
-  getItem(id) {
-    return this.expenses.find((item) => item.id === id);
+  getItem(id: number): IncomeResponseType | undefined {
+    return this.expenses.find(
+      (item: ExpenseResponseType): boolean => item.id === id,
+    );
   }
 }
